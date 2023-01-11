@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import React, {useEffect, useState} from 'react'
+import {apiKey} from "./apiKey.js";
 
 const CoinRoute = () => {
     const params = useParams();
@@ -9,23 +10,28 @@ const CoinRoute = () => {
 
     const options = {
         method: 'GET',
-        url: `https://coinranking1.p.rapidapi.com/coin/${params.uuid}/supply`,
+        url: `https://coinranking1.p.rapidapi.com/coin/${params.uuid}/history`,
+        params: {referenceCurrencyUuid: 'yhjMzLPhuIDl', timePeriod: '24h'},
         headers: {
-            'X-RapidAPI-Key': '86f833605emsh83e174d75b9d92ep101ef3jsn07194cd8227d',
+            'X-RapidAPI-Key': apiKey,
             'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
         }
     };
+      
+    useEffect(() => {
+        axios.request(options).then(function (response) {
+            console.log(response.data);
+            setCoinArray(response.data);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    }, [])
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
-        setCoinArray(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
-
+    console.log(coinArray.data.supply.totalAmount);
   return (
     <div>
-        {coinArray.supply.maxAmount}
+        <h1>{coinArray.data.supply.totalAmount}</h1>
+
     </div>
   )
 }
