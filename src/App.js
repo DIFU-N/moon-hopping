@@ -39,9 +39,9 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Coins mis={coin}/>} />
-      {/* <Route path="/coinArrayPath" element={<CoinRoute />} >
+      <Route path="/coinArrayPath" element={<CoinRoute />} >
         <Route path=":uuid" element={<CoinRoute />}/>
-      </Route> */}
+      </Route>
     </Routes>
   );
 }
