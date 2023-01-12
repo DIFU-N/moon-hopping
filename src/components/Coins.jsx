@@ -94,6 +94,6 @@ const Coins = (props) => {
 // 		);
 // 	}
 // }
-//  
+
 // module.exports = Coins;                              
 export default Coins;
