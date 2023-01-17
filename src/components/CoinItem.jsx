@@ -1,7 +1,7 @@
 import React from 'react'
 
 const CoinItem = (props) => {
-  // console.log(props.copous);
+  // console.log(props.copous.name);
   return (
     <div className='grid grid-cols-4 p-3 m-3 border'>
       <p>{props.copous.rank}</p>
